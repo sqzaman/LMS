@@ -14,6 +14,7 @@ import mpp.lab.lms.model.Role;
 import mpp.lab.lms.model.Staff;
 import mpp.lab.lms.service.BookService;
 import mpp.lab.lms.service.factory.ServiceFactory;
+import mpp.lab.lms.util.AuthorizationRole;
 import mpp.lab.lms.model.Book;
 import mpp.lab.lms.model.BookCopy;
 import mpp.lab.lms.model.CheckoutEntry;
@@ -28,6 +29,20 @@ public class Main {
 		Date date1 = sdf.parse(dateString1);
 		String dateString2 = "2014-02-18";
 		Date date2 = sdf.parse(dateString2);
+		
+		// Role
+		Role admin = new Role(AuthorizationRole.Administrator, "administrator");
+		Role librarian = new Role(AuthorizationRole.Librarian, "administrator");	
+		
+		
+		// Staff
+		
+		Staff staff1 = new Staff("username1", "password1", admin);
+		Staff staff2 = new Staff("username2", "password2", librarian);
+		
+		//Staff  librarian1 = new Staff();
+		
+		
 		
 		
 		// TODO Auto-generated method stub
@@ -46,8 +61,7 @@ public class Main {
 		Book book1 = new Book("123", "Core Java 1", 7, authorList1);
 		Book book2 = new Book("436", "Core C# 1", 15, authorList1);
 		
-		Staff staff1 = new Staff("username1", "password1", new Role("1","Librarian"));
-		Staff staff2 = new Staff("username2", "password2", new Role("2","Admin"));
+	
 		
 		bookService.addBook(book1);
 		bookService.addBook(book2);
