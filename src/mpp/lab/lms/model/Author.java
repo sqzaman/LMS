@@ -24,6 +24,9 @@ public class Author {
 		return person;
 	}
 	
+	public String toString() {
+		return "Author: " + this.person.getFirstName() + this.person.getLastName();
+	}
 	
 	
 }
