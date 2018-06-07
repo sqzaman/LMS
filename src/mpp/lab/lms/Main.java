@@ -61,31 +61,38 @@ public class Main {
 		//Staff  librarian1 = new Staff();
 		
 		
+		if(staffService.checkStaffHasPermission(staffLogedIn)) {
+
+			BookService bookService = ServiceFactory.getBookService();
+			
+			// create book and new book and copy of book;
+			Person person1 = new Person("Syed", "Quamruzzaman", "2000 N Court Street 20A", "Fairfield", "Iowa", "123-224-2232");
+			Person person2 = new Person("Silas", "Silasinka", "1000 N Court Street 80A", "Chicago", "Illinois", "999-224-2232");
+			
+			Author author1 = new Author("Dr.", "Prominent Writer", person1);
+			Author author2 = new Author("Dr.", "Prominent Writer", person2);
+			List<Author> authorList1 = new ArrayList<>();
+			authorList1.add(author1);
+			authorList1.add(author2);
+			
+			Book book1 = new Book("123", "Core Java 1", 7, authorList1);
+			Book book2 = new Book("436", "Core C# 1", 15, authorList1);
+			
+		
+			
+			bookService.addBook(book1);
+			bookService.addBook(book2);
+			
+			BookCopy bookCopy1 = new BookCopy(book1, 10, true);
+			BookCopy bookCopy2 = new BookCopy(book2, 20, true);
+		} else {
+			System.out.println("Only Librarian can add book and book copy!");
+			return;
+		}
 		
 		
-		// TODO Auto-generated method stub
-		BookService bookService = ServiceFactory.getBookService();
 		
-		// create book and new book and copy of book;
-		Person person1 = new Person("Syed", "Quamruzzaman", "2000 N Court Street 20A", "Fairfield", "Iowa", "123-224-2232");
-		Person person2 = new Person("Silas", "Silasinka", "1000 N Court Street 80A", "Chicago", "Illinois", "999-224-2232");
 		
-		Author author1 = new Author("Dr.", "Prominent Writer", person1);
-		Author author2 = new Author("Dr.", "Prominent Writer", person2);
-		List<Author> authorList1 = new ArrayList<>();
-		authorList1.add(author1);
-		authorList1.add(author2);
-		
-		Book book1 = new Book("123", "Core Java 1", 7, authorList1);
-		Book book2 = new Book("436", "Core C# 1", 15, authorList1);
-		
-	
-		
-		bookService.addBook(book1);
-		bookService.addBook(book2);
-		
-		BookCopy bookCopy1 = new BookCopy(book1, 10, true);
-		BookCopy bookCopy2 = new BookCopy(book2, 20, true);
 		
 		Member member1 = new Member(001, person2);
 		
