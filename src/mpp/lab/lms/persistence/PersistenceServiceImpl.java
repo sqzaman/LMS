@@ -63,6 +63,7 @@ public class PersistenceServiceImpl implements PersistenceService {
 		staffMap.put(f.getUsername(), f);		
 	}
 	
+	@Override
 	public Staff getStaff(String username) {			
 		return staffMap.get(username);
 	}

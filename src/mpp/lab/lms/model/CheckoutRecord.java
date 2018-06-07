@@ -1,5 +1,6 @@
 package mpp.lab.lms.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CheckoutRecord {
@@ -8,6 +9,7 @@ public class CheckoutRecord {
 	
 	public CheckoutRecord(Member member) {
 		this.member = member;
+		checkoutEntries = new ArrayList<CheckoutEntry>();
 	}
 	
 	public List<CheckoutEntry> getCheckoutRecord() {

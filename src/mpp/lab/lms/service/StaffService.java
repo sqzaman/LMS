@@ -4,4 +4,5 @@ import mpp.lab.lms.model.Staff;
 
 public interface StaffService {
 	boolean checkStaffHasPermission(Staff staff);
+	void addNewStaff(Staff staff);
 }

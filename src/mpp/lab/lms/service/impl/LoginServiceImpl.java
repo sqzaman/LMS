@@ -15,7 +15,7 @@ public class LoginServiceImpl implements LoginService{
 		if(staff == null) return null;		
 		if(!checkIfPasswordMatches(staff, password)) return null;
 		
-		System.out.println("User Logged in - Wellcome to the system!");			
+		System.out.println("User logged in - Wellcome to the system!");			
 		return loadUserIntoSession(staff);
 	}
 	
