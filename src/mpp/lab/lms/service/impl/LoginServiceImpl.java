@@ -10,14 +10,13 @@ public class LoginServiceImpl implements LoginService{
 	PersistenceService ps = ServiceFactory.getPersistenceService();
 	
 	@Override
-	public void login(String id, String password) {		
+	public Staff login(String id, String password) {		
 		Staff staff = getStaffByID(id);
-		if(staff == null) return;
+		if(staff == null) return null;		
+		if(!checkIfPasswordMatches(staff, password)) return null;
 		
-		if(checkIfPasswordMatches(staff, password)) {
-			System.out.println("User Logged in - Wellcome to the system!");
-		}
-				
+		System.out.println("User Logged in - Wellcome to the system!");			
+		return loadUserIntoSession(staff);
 	}
 	
 	@Override
@@ -28,6 +27,17 @@ public class LoginServiceImpl implements LoginService{
 	@Override
 	public boolean checkIfPasswordMatches(Staff staff, String password) {
 		return staff.getPassword().equals(password);
+	}
+	
+	@Override
+	public Staff loadUserIntoSession(Staff staff) {
+		return staff;
+	}
+	
+	@Override
+	public void redirectToIndex() {
+		System.out.println("Redirecting...");
+		System.out.println("Index page shows");
 	}
 
 }

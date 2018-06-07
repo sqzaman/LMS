@@ -6,6 +6,7 @@ public interface LoginService {
 	
 	Staff getStaffByID(String id);
 	boolean checkIfPasswordMatches(Staff staff, String password);
-	void login(String id, String password);
-
+	Staff login(String id, String password);
+	Staff loadUserIntoSession(Staff staff);
+	void redirectToIndex();
 }
