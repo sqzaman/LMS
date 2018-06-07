@@ -6,6 +6,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 import mpp.lab.lms.model.Author;
@@ -17,6 +19,7 @@ import mpp.lab.lms.model.Member;
 import mpp.lab.lms.model.Person;
 import mpp.lab.lms.model.Role;
 import mpp.lab.lms.model.Staff;
+import mpp.lab.lms.persistence.PersistenceService;
 import mpp.lab.lms.service.BookService;
 import mpp.lab.lms.service.CheckoutService;
 import mpp.lab.lms.service.LoginService;
@@ -30,6 +33,7 @@ public class Main {
 	public static void main(String[] args) throws ParseException {
 		LoginService loginService = ServiceFactory.getLoginService(); 
 		StaffService staffService = ServiceFactory.getStaffService(); 
+		PersistenceService persistenceService = ServiceFactory.getPersistenceService();
 		
 		
 		
@@ -82,23 +86,21 @@ public class Main {
 			Book book1 = new Book("123", "Core Java 1", 7, authorList1);
 			Book book2 = new Book("436", "Core C# 1", 15, authorList1);
 			
-		
-			
 			bookService.addBook(book1);
 			bookService.addBook(book2);
 			
 			bookCopy1 = new BookCopy(book1, 10, true);
-			 bookCopy2 = new BookCopy(book2, 20, true);
+			bookCopy2 = new BookCopy(book2, 20, true);
+			 
+			book1.addCopy(bookCopy1);
+			book2.addCopy(bookCopy2);
 		} else {
 			System.out.println("Only Librarian can add book and book copy!");
 			return;
 		}
 		
-		
-		
-		
-		
 		Member member1 = new Member(001, person2);
+		persistenceService.addMember(member1);
 		
 		CheckoutRecord record1 = new CheckoutRecord(member1);
 		
@@ -111,6 +113,11 @@ public class Main {
 		//2. Add a new library member to the system
 		//testAddNewMember();
 		
+		//3. test checkout
+		List<String> isbns = new LinkedList<>();
+		isbns.add("123");
+		isbns.add("436");
+		testCheckout(member1.getId(), isbns);
 	}
 	
 	private static void testAddNewMember() {
@@ -129,7 +136,11 @@ public class Main {
 	private static void testCheckout(int memberId, List<String> isbn) {
 		CheckoutService cs = ServiceFactory.getCheckoutService();
 		
-		cs.checkout(memberId, isbn);
+		try {
+			cs.checkout(memberId, isbn);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 }

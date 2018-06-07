@@ -40,5 +40,7 @@ public class Book {
 		return copies;
 	}
 	
-
+	public void addCopy(BookCopy copy) {
+		copies.add(copy);
+	}
 }
