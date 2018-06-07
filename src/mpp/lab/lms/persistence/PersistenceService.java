@@ -12,4 +12,6 @@ public interface PersistenceService {
 	List<Member> getMembers();
 	void setMembers(List<Member> members);
 	Object getObject(Object o);
+	
+	void addBook(Book b);
 }
