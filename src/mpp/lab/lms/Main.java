@@ -5,7 +5,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -37,8 +36,10 @@ public class Main {
 		Person person2 = new Person("Silas", "Silasinka", "1000 N Court Street 80A", "Chicago", "Illinois", "999-224-2232");
 		
 		Author author1 = new Author("Dr.", "Prominent Writer", person1);
+		Author author2 = new Author("Dr.", "Prominent Writer", person2);
 		List<Author> authorList1 = new ArrayList<>();
 		authorList1.add(author1);
+		authorList1.add(author2);
 		
 		Book book1 = new Book("123", "Core Java 1", 7, authorList1);
 		Book book2 = new Book("436", "Core C# 1", 15, authorList1);
