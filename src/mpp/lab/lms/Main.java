@@ -27,6 +27,8 @@ import mpp.lab.lms.util.AuthorizationRole;
 public class Main {
 
 	public static void main(String[] args) throws ParseException {
+		testAddNewMember();
+		
 		LoginService loginService = ServiceFactory.getLoginService(); 
 		StaffService staffService = ServiceFactory.getStaffService(); 
 		
@@ -107,11 +109,13 @@ public class Main {
 		member1.addCheckoutRecord(record1);
 		
 		//2. Add a new library member to the system
-		//testAddNewMember();
+		testAddNewMember();
 		
 	}
 	
 	private static void testAddNewMember() {
+		System.out.println("2. Add a new library member to the system");
+		
 		MemberService memberService = ServiceFactory.getMemberService();
 		
 		AuthorizationRole authorizationRole = AuthorizationRole.Administrator;
@@ -121,6 +125,8 @@ public class Main {
 		Staff staff = new Staff("obama", "12345654", adminRole);
 		
 		memberService.addMember(12, staff, "Donald", "Trump", "1000 N Court Street 20A", "Washington DC", "Pensyl", "111-224-2232");
+		
+		System.out.println("____________________________________________");
 		
 	}
 
