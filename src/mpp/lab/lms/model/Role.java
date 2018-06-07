@@ -1,9 +1,6 @@
 package mpp.lab.lms.model;
 
-enum AuthorizationRole {
-	Administrator, Librarian;
-}
-
+import mpp.lab.lms.util.AuthorizationRole;
 
 public class Role {
 	private AuthorizationRole authorizationLevel;

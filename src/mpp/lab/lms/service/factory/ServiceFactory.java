@@ -7,7 +7,6 @@ import mpp.lab.lms.service.StaffService;
 import mpp.lab.lms.service.impl.BookServiceImpl;
 import mpp.lab.lms.service.impl.StaffServiceImpl;
 import mpp.lab.lms.service.LoginService;
-import mpp.lab.lms.service.impl.BookServiceImpl;
 import mpp.lab.lms.service.impl.LoginServiceImpl;
 
 

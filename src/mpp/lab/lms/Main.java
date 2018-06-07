@@ -10,8 +10,10 @@ import java.util.List;
 
 import mpp.lab.lms.model.Author;
 import mpp.lab.lms.model.Person;
+import mpp.lab.lms.model.Role;
 import mpp.lab.lms.service.BookService;
 import mpp.lab.lms.service.factory.ServiceFactory;
+import mpp.lab.lms.util.AuthorizationRole;
 import mpp.lab.lms.model.Book;
 import mpp.lab.lms.model.BookCopy;
 import mpp.lab.lms.model.CheckoutEntry;
@@ -27,7 +29,13 @@ public class Main {
 		String dateString2 = "2014-02-18";
 		Date date2 = sdf.parse(dateString2);
 		
+		// Role
+		Role admin = new Role(AuthorizationRole.Administrator, "administrator");
+		Role librarian = new Role(AuthorizationRole.Librarian, "administrator");
+		
 		// Staff
+		
+		//Staff  librarian1 = new Staff();
 		
 		
 		
