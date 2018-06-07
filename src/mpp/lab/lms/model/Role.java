@@ -1,19 +1,24 @@
 package mpp.lab.lms.model;
 
+enum AuthorizationRole {
+	Administrator, Librarian;
+}
+
+
 public class Role {
-	private String authorizationLevel;
+	private AuthorizationRole authorizationLevel;
 	private String description;
 	
-	public Role(String authorizationLevel, String description) {
+	public Role(AuthorizationRole authorizationLevel, String description) {
 		this.authorizationLevel = authorizationLevel;
 		this.description = description;
 	}
 
-	public String getAuthorizationLevel() {
+	public AuthorizationRole getAuthorizationLevel() {
 		return authorizationLevel;
 	}
 
-	public void setAuthorizationLevel(String authorizationLevel) {
+	public void setAuthorizationLevel(AuthorizationRole authorizationLevel) {
 		this.authorizationLevel = authorizationLevel;
 	}
 
