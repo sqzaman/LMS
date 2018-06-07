@@ -27,8 +27,6 @@ import mpp.lab.lms.util.AuthorizationRole;
 public class Main {
 
 	public static void main(String[] args) throws ParseException {
-		testAddNewMember();
-		
 		LoginService loginService = ServiceFactory.getLoginService(); 
 		StaffService staffService = ServiceFactory.getStaffService(); 
 		
@@ -115,6 +113,8 @@ public class Main {
 	}
 	
 	private static void testAddNewMember() {
+		String line = "---------------------------------------------------";
+		System.out.println(line);
 		System.out.println("2. Add a new library member to the system");
 		
 		MemberService memberService = ServiceFactory.getMemberService();
@@ -127,7 +127,7 @@ public class Main {
 		
 		memberService.addMember(12, staff, "Donald", "Trump", "1000 N Court Street 20A", "Washington DC", "Pensyl", "111-224-2232");
 		
-		System.out.println("____________________________________________");
+		System.out.println(line);
 		
 	}
 
