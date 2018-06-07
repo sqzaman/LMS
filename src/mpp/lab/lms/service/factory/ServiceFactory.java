@@ -3,22 +3,25 @@ package mpp.lab.lms.service.factory;
 import mpp.lab.lms.persistence.PersistenceService;
 import mpp.lab.lms.persistence.PersistenceServiceImpl;
 import mpp.lab.lms.service.BookService;
+import mpp.lab.lms.service.LoginService;
 import mpp.lab.lms.service.MemberService;
 import mpp.lab.lms.service.PersonService;
 import mpp.lab.lms.service.StaffService;
 import mpp.lab.lms.service.impl.BookServiceImpl;
+import mpp.lab.lms.service.impl.LoginServiceImpl;
 import mpp.lab.lms.service.impl.MemberServiceImpl;
 import mpp.lab.lms.service.impl.PersonServiceImpl;
 import mpp.lab.lms.service.impl.StaffServiceImpl;
 
 public class ServiceFactory {
+	
 	private volatile static PersistenceService persistenceService;
 	private volatile static BookService bookService;
 	private volatile static MemberService memberService;
 	private volatile static StaffService staffService;
 	private volatile static PersonService personService;
+	private volatile static LoginService loginService;
 
-	
 	public static PersistenceService getPersistenceService() {
 		if(null == persistenceService) {
 			synchronized(PersistenceService.class) {
@@ -73,6 +76,16 @@ public class ServiceFactory {
 		}
 		return personService;
 	}
-	
+
+	public static LoginService getLoginService() {
+		if(null == loginService) {
+			synchronized(ServiceFactory.class) {
+				if(null == loginService) {
+					loginService = new LoginServiceImpl();
+				}
+			}
+		}
+		return loginService;
+	}
 }
 
