@@ -6,11 +6,13 @@ public class CheckoutEntry {
 	private BookCopy book;
 	private Date checkoutDate;
 	private Date dueDate;
+	private CheckoutRecord checkoutRecord;
 	
-	public CheckoutEntry(BookCopy book, Date checkoutDate, Date dueDate) {
+	public CheckoutEntry(CheckoutRecord checkoutRecord,BookCopy book, Date checkoutDate, Date dueDate) {
 		this.book = book;
 		this.checkoutDate = checkoutDate;
 		this.dueDate = dueDate;
+		this.checkoutRecord = checkoutRecord;
 	}
 
 	public BookCopy getBook() {
@@ -23,6 +25,10 @@ public class CheckoutEntry {
 
 	public Date getDueDate() {
 		return dueDate;
+	}
+	
+	public CheckoutRecord getCheckoutRecord() {
+		return this.checkoutRecord;
 	}
 	
 }
