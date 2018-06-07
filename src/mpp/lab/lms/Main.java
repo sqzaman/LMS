@@ -9,23 +9,27 @@ import java.util.Date;
 import java.util.List;
 
 import mpp.lab.lms.model.Author;
-import mpp.lab.lms.model.Person;
-import mpp.lab.lms.model.Role;
-import mpp.lab.lms.model.Staff;
-import mpp.lab.lms.service.BookService;
-import mpp.lab.lms.service.LoginService;
-import mpp.lab.lms.service.factory.ServiceFactory;
-import mpp.lab.lms.util.AuthorizationRole;
 import mpp.lab.lms.model.Book;
 import mpp.lab.lms.model.BookCopy;
 import mpp.lab.lms.model.CheckoutEntry;
 import mpp.lab.lms.model.CheckoutRecord;
 import mpp.lab.lms.model.Member;
+import mpp.lab.lms.model.Person;
+import mpp.lab.lms.model.Role;
+import mpp.lab.lms.model.Staff;
+import mpp.lab.lms.service.BookService;
+import mpp.lab.lms.service.LoginService;
+import mpp.lab.lms.service.StaffService;
+import mpp.lab.lms.service.factory.ServiceFactory;
+import mpp.lab.lms.util.AuthorizationRole;
 
 public class Main {
 
 	public static void main(String[] args) throws ParseException {
 		LoginService loginService = ServiceFactory.getLoginService(); 
+		StaffService staffService = ServiceFactory.getStaffService(); 
+		
+		
 		
 		DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String dateString1 = "2014-02-11";
@@ -42,6 +46,9 @@ public class Main {
 		
 		Staff staff1 = new Staff("username1", "password1", admin);
 		Staff staff2 = new Staff("username2", "password2", librarian);
+		
+		staffService.addNewStaff(staff1);
+		staffService.addNewStaff(staff2);
 		
 		Staff staffLogedIn = loginService.login("username1", "password1");
 		

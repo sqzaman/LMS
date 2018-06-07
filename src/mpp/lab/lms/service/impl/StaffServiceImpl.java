@@ -16,4 +16,9 @@ public class StaffServiceImpl implements StaffService {
 		return o.getClass() == staff.getClass();
 	}
 
+	@Override
+	public void addNewStaff(Staff staff) {
+		ps.addStaff(staff);
+	}
+
 }
