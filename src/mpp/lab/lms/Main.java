@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import mpp.lab.lms.exceptions.CheckoutException;
 import mpp.lab.lms.exceptions.StaffPermissionException;
 import mpp.lab.lms.model.Author;
 import mpp.lab.lms.model.Book;
@@ -150,7 +151,7 @@ public class Main {
 		
 		try {
 			cs.checkout(memberId, isbn);
-		} catch (Exception e) {
+		} catch (CheckoutException e) {
 			System.out.println(e.getMessage());
 		}
 	}

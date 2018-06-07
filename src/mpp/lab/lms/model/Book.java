@@ -39,8 +39,19 @@ public class Book {
 	public List<BookCopy> getCopies() {
 		return copies;
 	}
-	
+
 	public void addCopy(BookCopy copy) {
 		copies.add(copy);
 	}
+	
+	public String toString() {
+		String s = "Book: " + this.title + "\n";
+		
+		for (Author author: authors) {
+			s += " Authors: [" + author.toString() + "]";
+		}
+
+		return s;
+	}
+
 }
