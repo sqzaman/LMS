@@ -55,7 +55,7 @@ public class PersistenceServiceImpl implements PersistenceService {
 	@Override
 	public void addMember(Member m) {
 		members.put(m.getId(), m);
-		
+		persistObject(m);		
 	}
 	
 	@Override
