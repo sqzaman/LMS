@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import mpp.lab.lms.exceptions.StaffPermissionException;
 import mpp.lab.lms.model.Author;
 import mpp.lab.lms.model.Book;
 import mpp.lab.lms.model.BookCopy;
@@ -119,13 +120,17 @@ public class Main {
 		
 		MemberService memberService = ServiceFactory.getMemberService();
 		
-		AuthorizationRole authorizationRole = AuthorizationRole.Administrator;
+		AuthorizationRole authorizationRole = AuthorizationRole.Librarian;
 		
 		Role adminRole = new Role(authorizationRole, "can do alot of stuff");
 		
 		Staff staff = new Staff("obama", "12345654", adminRole);
 		
-		memberService.addMember(12, staff, "Donald", "Trump", "1000 N Court Street 20A", "Washington DC", "Pensyl", "111-224-2232");
+		try {
+			memberService.addMember(12, staff, "Donald", "Trump", "1000 N Court Street 20A", "Washington DC", "Pensyl", "111-224-2232");
+		} catch (StaffPermissionException e) {
+			e.printStackTrace();
+		}
 		
 		System.out.println(line);
 		
