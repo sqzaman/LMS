@@ -8,7 +8,7 @@ public class Book {
 	String isbn;
 	String title;
 	int borrowableDays;
-	List<Author> authors = new ArrayList<>();
+	List<Author> authors;
 	
 	public Book(String isbn, String title, int borrowableDays, List<Author> authors) {
 		this.isbn = isbn;
