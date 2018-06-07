@@ -52,7 +52,8 @@ public class Main {
 		staffService.addNewStaff(staff1);
 		staffService.addNewStaff(staff2);
 		
-		Staff staffLogedIn = loginService.login("username1", "password1");
+		//Staff staffLogedIn = loginService.login("username1", "password1");
+		Staff staffLogedIn = loginService.login("username2", "password2");
 		
 		if(staffLogedIn == null) {
 			System.out.println("User name or password invalid");
