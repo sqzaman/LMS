@@ -1,16 +1,17 @@
 package mpp.lab.lms.model;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Member {
 	private int id;
 	private Person person;
-	private List<CheckoutRecord> checkoutRecord;
+	private List<CheckoutRecord> checkoutRecords;
 	
-	public Member(int id, Person person, List<CheckoutRecord> checkoutRecord) {
+	public Member(int id, Person person) {
 		this.id = id;
 		this.person = person;
-		this.checkoutRecord = checkoutRecord;
+		checkoutRecords = new LinkedList<>();
 	}
 	
 	public int getId() {
@@ -19,8 +20,13 @@ public class Member {
 	public Person getPerson() {
 		return person;
 	}
+	
 	public List<CheckoutRecord> getCheckoutRecord() {
-		return checkoutRecord;
+		return checkoutRecords;
+	}
+	
+	public void addCheckoutRecord(CheckoutRecord record) {
+		checkoutRecords.add(record);
 	}
 	
 }

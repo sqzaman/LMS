@@ -8,7 +8,7 @@ public class CheckoutEntry {
 	private Date dueDate;
 	private CheckoutRecord checkoutRecord;
 	
-	public CheckoutEntry(CheckoutRecord checkoutRecord,BookCopy book, Date checkoutDate, Date dueDate) {
+	public CheckoutEntry(CheckoutRecord checkoutRecord, BookCopy book, Date checkoutDate, Date dueDate) {
 		this.book = book;
 		this.checkoutDate = checkoutDate;
 		this.dueDate = dueDate;
