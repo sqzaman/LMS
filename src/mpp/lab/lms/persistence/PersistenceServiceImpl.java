@@ -14,6 +14,7 @@ public class PersistenceServiceImpl implements PersistenceService {
 		System.out.println("Saving - " + o.toString());
 	}
 
+
 	public List<Book> getBooks() {
 		return books;
 	}
@@ -28,5 +29,11 @@ public class PersistenceServiceImpl implements PersistenceService {
 
 	public void setMembers(List<Member> members) {
 		this.members = members;
+	}
+
+	@Override
+	public Object getObject(Object o) {
+		System.out.println("retrieving data from persistence layer");
+		return o;
 	}
 }
