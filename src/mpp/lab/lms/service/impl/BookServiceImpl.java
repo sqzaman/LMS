@@ -10,7 +10,7 @@ public class BookServiceImpl implements BookService {
 	PersistenceService ps = ServiceFactory.getPersistenceService();
 	@Override
 	public Book addBook(Book b) {
-		ps.setBooks(books);
+		ps.addBook(b);
 		return null;
 	}
 
