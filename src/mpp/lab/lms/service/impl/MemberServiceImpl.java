@@ -16,13 +16,9 @@ public class MemberServiceImpl implements MemberService {
 	PersistenceService persistenceService = ServiceFactory.getPersistenceService(); 
 	
 	@Override
-<<<<<<< HEAD
+
 	public void addMember(int id, Staff staff, String firstName, String lastName, String street, String city, String state, String phoneNumber) {
 		if(staffService.checkStaffHasPermissionToAddMember(staff)) {
-=======
-	public void addMember(int id, Staff staff, String firstName, String lastName, String street, String city, String state, String phoneNumber) throws StaffPermissionException {
-		if(staffService.checkStaffHasPermission(staff)) {
->>>>>>> 001d3a170029b7aaab6ad39ee7b2bdbdad2ecf5f
 			Person p = personService.createPerson(firstName, lastName, street, city, state, phoneNumber);
 			Member m = createMember(id, p);
 			persistenceService.addMember(m);
