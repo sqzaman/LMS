@@ -34,15 +34,19 @@ public class CheckoutServiceImpl implements CheckoutService {
 		addCheckoutRecord(member, record);
 	}
 	
+	//create checkoutEntry
 	private CheckoutEntry addCheckoutEntry(String isbn, CheckoutRecord record) {
 		Book book = bs.getBookByISBN(isbn);
 		BookCopy copy = (BookCopy) ((LinkedList) book.getCopies()).getFirst();
 		Date checkoutDate = new Date();
 		Date dueDate = getDueDate( book.getBorrowableDays() );
 		
+		copy.setAvailable(false);
+		
 		return new CheckoutEntry( record, copy, checkoutDate, dueDate );
 	}
 	
+	//add record to member and persist the object
 	private void addCheckoutRecord(Member member, CheckoutRecord record) {
 		member.addCheckoutRecord(record);
 		HashMap<Integer, Member> members = (HashMap) ps.getMembers();
@@ -50,6 +54,7 @@ public class CheckoutServiceImpl implements CheckoutService {
 		ps.setMembers(members);
 	}
 	
+	//add days to current date
 	private Date getDueDate(int days) {
 		Date date = new Date();
 		 
