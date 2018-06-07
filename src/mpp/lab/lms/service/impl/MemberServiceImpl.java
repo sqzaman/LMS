@@ -1,5 +1,6 @@
 package mpp.lab.lms.service.impl;
 
+import mpp.lab.lms.exceptions.StaffPermissionException;
 import mpp.lab.lms.model.Member;
 import mpp.lab.lms.model.Person;
 import mpp.lab.lms.model.Staff;
@@ -15,11 +16,13 @@ public class MemberServiceImpl implements MemberService {
 	PersistenceService persistenceService = ServiceFactory.getPersistenceService(); 
 	
 	@Override
-	public void addMember(int id, Staff staff, String firstName, String lastName, String street, String city, String state, String phoneNumber) {
+	public void addMember(int id, Staff staff, String firstName, String lastName, String street, String city, String state, String phoneNumber) throws StaffPermissionException {
 		if(staffService.checkStaffHasPermission(staff)) {
 			Person p = personService.createPerson(firstName, lastName, street, city, state, phoneNumber);
 			Member m = createMember(id, p);
 			persistenceService.addMember(m);
+		}else {
+			throw new StaffPermissionException("Staff has no permission");
 		}
 	}
 	
