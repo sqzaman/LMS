@@ -12,6 +12,11 @@ public class CheckoutRecord {
 		checkoutEntries = new ArrayList<CheckoutEntry>();
 	}
 	
+	@Override
+	public String toString() {
+		return "CheckoutRecord [checkoutEntries=" + checkoutEntries + ", member=" + member + "]";
+	}
+
 	public List<CheckoutEntry> getCheckoutRecord() {
 		return checkoutEntries;
 	}
