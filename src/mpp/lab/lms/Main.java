@@ -43,8 +43,7 @@ public class Main {
 		Role librarian = new Role(AuthorizationRole.Librarian, "administrator");	
 		
 		
-		// Staff
-		
+		// Staff		
 		Staff staff1 = new Staff("username1", "password1", admin);
 		Staff staff2 = new Staff("username2", "password2", librarian);
 		
@@ -60,14 +59,17 @@ public class Main {
 		
 		//Staff  librarian1 = new Staff();
 		
-		
+		Person person1 = null;
+		Person person2 = null;
+		BookCopy bookCopy1 = null;
+		BookCopy bookCopy2 = null;
 		if(staffService.checkStaffHasPermission(staffLogedIn)) {
 
 			BookService bookService = ServiceFactory.getBookService();
 			
 			// create book and new book and copy of book;
-			Person person1 = new Person("Syed", "Quamruzzaman", "2000 N Court Street 20A", "Fairfield", "Iowa", "123-224-2232");
-			Person person2 = new Person("Silas", "Silasinka", "1000 N Court Street 80A", "Chicago", "Illinois", "999-224-2232");
+			person1 = new Person("Syed", "Quamruzzaman", "2000 N Court Street 20A", "Fairfield", "Iowa", "123-224-2232");
+			person2 = new Person("Silas", "Silasinka", "1000 N Court Street 80A", "Chicago", "Illinois", "999-224-2232");
 			
 			Author author1 = new Author("Dr.", "Prominent Writer", person1);
 			Author author2 = new Author("Dr.", "Prominent Writer", person2);
@@ -83,8 +85,8 @@ public class Main {
 			bookService.addBook(book1);
 			bookService.addBook(book2);
 			
-			BookCopy bookCopy1 = new BookCopy(book1, 10, true);
-			BookCopy bookCopy2 = new BookCopy(book2, 20, true);
+			bookCopy1 = new BookCopy(book1, 10, true);
+			 bookCopy2 = new BookCopy(book2, 20, true);
 		} else {
 			System.out.println("Only Librarian can add book and book copy!");
 			return;
