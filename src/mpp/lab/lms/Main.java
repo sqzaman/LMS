@@ -131,7 +131,7 @@ public class Main {
 		
 		MemberService memberService = ServiceFactory.getMemberService();
 		
-		AuthorizationRole authorizationRole = AuthorizationRole.Librarian;
+		AuthorizationRole authorizationRole = AuthorizationRole.Administrator;
 		
 		Role adminRole = new Role(authorizationRole, "can do alot of stuff");
 		

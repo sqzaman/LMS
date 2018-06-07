@@ -39,4 +39,8 @@ public class BookCopy {
 	public List<CheckoutEntry> getCheckoutEntries() {
 		return this.checkoutEntries;
 	}
+	
+	public String toString() {
+		return "Book ISBN: "+book.isbn+", Num: "+number+", Available: "+ (isAvailable ? "True":"False");
+	}
 }
