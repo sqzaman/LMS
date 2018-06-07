@@ -83,17 +83,6 @@ public class ServiceFactory {
 		return checkoutService;
 	}
 	
-	public static MemberService getMemberService() {
-		if(null == memberService) {
-			synchronized(ServiceFactory.class) {
-				if(null == memberService) {
-					memberService = new MemberServiceImpl();
-				}
-			}
-		}
-		return memberService;
-	}	
-	
 	public static PersonService getPersonService() {
 		if(null == personService) {
 			synchronized(ServiceFactory.class) {
