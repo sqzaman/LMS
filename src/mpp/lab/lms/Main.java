@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import mpp.lab.lms.exceptions.StaffPermissionException;
 import mpp.lab.lms.model.Author;
 import mpp.lab.lms.model.Book;
 import mpp.lab.lms.model.BookCopy;
@@ -69,7 +70,7 @@ public class Main {
 		Person person2 = null;
 		BookCopy bookCopy1 = null;
 		BookCopy bookCopy2 = null;
-		if(staffService.checkStaffHasPermission(staffLogedIn)) {
+		if(staffService.checkStaffHasPermissionToAddBook(staffLogedIn)) {
 
 			BookService bookService = ServiceFactory.getBookService();
 			
@@ -91,9 +92,10 @@ public class Main {
 			
 			bookCopy1 = new BookCopy(book1, 10, true);
 			bookCopy2 = new BookCopy(book2, 20, true);
-			 
+		 
 			book1.addCopy(bookCopy1);
 			book2.addCopy(bookCopy2);
+
 		} else {
 			System.out.println("Only Librarian can add book and book copy!");
 			return;
@@ -111,7 +113,7 @@ public class Main {
 		member1.addCheckoutRecord(record1);
 		
 		//2. Add a new library member to the system
-		//testAddNewMember();
+		testAddNewMember();
 		
 		//3. test checkout
 		List<String> isbns = new LinkedList<>();
@@ -121,15 +123,25 @@ public class Main {
 	}
 	
 	private static void testAddNewMember() {
+		String line = "---------------------------------------------------";
+		System.out.println(line);
+		System.out.println("2. Add a new library member to the system");
+		
 		MemberService memberService = ServiceFactory.getMemberService();
 		
-		AuthorizationRole authorizationRole = AuthorizationRole.Administrator;
+		AuthorizationRole authorizationRole = AuthorizationRole.Librarian;
 		
 		Role adminRole = new Role(authorizationRole, "can do alot of stuff");
 		
 		Staff staff = new Staff("obama", "12345654", adminRole);
 		
-		memberService.addMember(12, staff, "Donald", "Trump", "1000 N Court Street 20A", "Washington DC", "Pensyl", "111-224-2232");
+		try {
+			memberService.addMember(12, staff, "Donald", "Trump", "1000 N Court Street 20A", "Washington DC", "Pensyl", "111-224-2232");
+		} catch (StaffPermissionException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println(line);
 		
 	}
 	
