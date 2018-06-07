@@ -14,10 +14,22 @@ public class StaffServiceImpl implements StaffService {
 	PersistenceService ps = ServiceFactory.getPersistenceService();
 	
 	@Override
-	public boolean checkStaffHasPermission(Staff staff) {
+	public boolean checkStaffHasPermissionToAddBook(Staff staff) {
 		List<Role> roles = staff.getRoles();
 		for(Role r: roles) {
 			if( r.getAuthorizationLevel() == AuthorizationRole.Librarian ) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	@Override
+	public boolean checkStaffHasPermissionToAddMember(Staff staff) {
+		List<Role> roles = staff.getRoles();
+		for(Role r: roles) {
+			if( r.getAuthorizationLevel() == AuthorizationRole.Administrator ) {
 				return true;
 			}
 		}

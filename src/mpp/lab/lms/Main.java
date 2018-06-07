@@ -64,7 +64,7 @@ public class Main {
 		Person person2 = null;
 		BookCopy bookCopy1 = null;
 		BookCopy bookCopy2 = null;
-		if(staffService.checkStaffHasPermission(staffLogedIn)) {
+		if(staffService.checkStaffHasPermissionToAddBook(staffLogedIn)) {
 
 			BookService bookService = ServiceFactory.getBookService();
 			
