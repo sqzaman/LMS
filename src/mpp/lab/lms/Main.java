@@ -87,7 +87,7 @@ public class Main {
 			bookService.addBook(book2);
 			
 			bookCopy1 = new BookCopy(book1, 10, true);
-			 bookCopy2 = new BookCopy(book2, 20, true);
+			bookCopy2 = new BookCopy(book2, 20, true);
 		} else {
 			System.out.println("Only Librarian can add book and book copy!");
 			return;
