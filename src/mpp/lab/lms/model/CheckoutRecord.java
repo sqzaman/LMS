@@ -1,5 +1,21 @@
 package mpp.lab.lms.model;
 
-public class CheckoutRecord {
+import java.util.List;
 
+public class CheckoutRecord {
+	private List<CheckoutRecord> checkoutRecord;
+	private	List<Member> member;	
+	
+	public CheckoutRecord(List<CheckoutRecord> checkoutRecord, List<Member> member) {
+		this.checkoutRecord = checkoutRecord;
+		this.member = member;
+	}
+	
+	public List<CheckoutRecord> getCheckoutRecord() {
+		return checkoutRecord;
+	}
+	public List<Member> getMember() {
+		return member;
+	}
+	
 }
