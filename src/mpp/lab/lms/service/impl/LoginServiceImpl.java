@@ -11,33 +11,37 @@ public class LoginServiceImpl implements LoginService{
 	
 	@Override
 	public Staff login(String id, String password) {		
+		System.out.println("calling login()");
 		Staff staff = getStaffByID(id);
 		if(staff == null) return null;		
 		if(!checkIfPasswordMatches(staff, password)) return null;
 		
-		System.out.println("User logged in - Wellcome to the system!");			
+		redirectToIndex();		
 		return loadUserIntoSession(staff);
 	}
 	
 	@Override
 	public Staff getStaffByID(String id) {
+		System.out.println("calling getStaffByID()");	
 		return ps.getStaff(id);
 	}
 
 	@Override
 	public boolean checkIfPasswordMatches(Staff staff, String password) {
+		System.out.println("calling checkIfPasswordMatches()");
 		return staff.getPassword().equals(password);
 	}
 	
 	@Override
 	public Staff loadUserIntoSession(Staff staff) {
+		System.out.println("calling loadUserIntoSession()");
 		return staff;
 	}
 	
 	@Override
 	public void redirectToIndex() {
-		System.out.println("Redirecting...");
-		System.out.println("Index page shows");
+		System.out.println("calling redirectToIndex()");
+		System.out.println("User logged in - Wellcome to the system!");	
 	}
 
 }
