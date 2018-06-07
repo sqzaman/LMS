@@ -40,5 +40,14 @@ public class Book {
 		return copies;
 	}
 	
+	public String toString() {
+		String s = "Book: " + this.title + "\n";
+		
+		for (Author author: authors) {
+			s += " [" + author.toString() + "]";
+		}
+
+		return s;
+	}
 
 }
