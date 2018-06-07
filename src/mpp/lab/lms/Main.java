@@ -18,6 +18,7 @@ import mpp.lab.lms.model.Person;
 import mpp.lab.lms.model.Role;
 import mpp.lab.lms.model.Staff;
 import mpp.lab.lms.service.BookService;
+import mpp.lab.lms.service.CheckoutService;
 import mpp.lab.lms.service.LoginService;
 import mpp.lab.lms.service.StaffService;
 import mpp.lab.lms.service.MemberService;
@@ -122,6 +123,12 @@ public class Main {
 		
 		memberService.addMember(12, staff, "Donald", "Trump", "1000 N Court Street 20A", "Washington DC", "Pensyl", "111-224-2232");
 		
+	}
+	
+	private static void testCheckout(int memberId, List<String> isbn) {
+		CheckoutService cs = ServiceFactory.getCheckoutService();
+		
+		cs.checkout(memberId, isbn);
 	}
 
 }
