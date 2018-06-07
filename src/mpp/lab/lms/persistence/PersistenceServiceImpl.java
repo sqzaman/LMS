@@ -7,4 +7,10 @@ public class PersistenceServiceImpl implements PersistenceService {
 		System.out.println(o.toString());		
 	}
 
+	@Override
+	public Object getObject(Object o) {
+		System.out.println("retrieving data from persistence layer");
+		return o;
+	}
+
 }
