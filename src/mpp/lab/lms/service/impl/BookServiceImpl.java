@@ -8,10 +8,15 @@ import mpp.lab.lms.service.factory.ServiceFactory;
 public class BookServiceImpl implements BookService {
 
 	PersistenceService ps = ServiceFactory.getPersistenceService();
+	
 	@Override
 	public Book addBook(Book b) {
 		ps.addBook(b);
 		return null;
+	}
+	@Override
+	public Book getBookByISBN(String isbn) {
+		return ps.getBooks().get(isbn);
 	}
 
 }

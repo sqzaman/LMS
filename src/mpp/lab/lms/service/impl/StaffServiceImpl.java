@@ -5,7 +5,6 @@ import java.util.List;
 import mpp.lab.lms.model.Role;
 import mpp.lab.lms.model.Staff;
 import mpp.lab.lms.persistence.PersistenceService;
-import mpp.lab.lms.persistence.PersistenceServiceImpl;
 import mpp.lab.lms.service.StaffService;
 import mpp.lab.lms.service.factory.ServiceFactory;
 import mpp.lab.lms.util.AuthorizationRole;
@@ -25,4 +24,10 @@ public class StaffServiceImpl implements StaffService {
 		
 		return false;
 	}
+
+	@Override
+	public void addNewStaff(Staff staff) {
+		ps.addStaff(staff);
+	}
+
 }

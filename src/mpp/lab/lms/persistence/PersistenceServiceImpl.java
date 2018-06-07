@@ -16,6 +16,7 @@ public class PersistenceServiceImpl implements PersistenceService {
 	public PersistenceServiceImpl() {
 		members= new HashMap<>();
 		books = new HashMap<>();
+		staffMap =  new HashMap<>();
 	}
 
 	public Map<String, Book> getBooks() {
@@ -57,6 +58,12 @@ public class PersistenceServiceImpl implements PersistenceService {
 		
 	}
 	
+	@Override
+	public void addStaff(Staff f) {
+		staffMap.put(f.getUsername(), f);		
+	}
+	
+	@Override
 	public Staff getStaff(String username) {			
 		return staffMap.get(username);
 	}
