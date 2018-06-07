@@ -120,7 +120,7 @@ public class Main {
 		
 		MemberService memberService = ServiceFactory.getMemberService();
 		
-		AuthorizationRole authorizationRole = AuthorizationRole.Administrator;
+		AuthorizationRole authorizationRole = AuthorizationRole.Librarian;
 		
 		Role adminRole = new Role(authorizationRole, "can do alot of stuff");
 		
