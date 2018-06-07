@@ -34,6 +34,12 @@ public class Person {
 		return city;
 	}
 
+	@Override
+	public String toString() {
+		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", street=" + street + ", city=" + city
+				+ ", state=" + state + ", phoneNumber=" + phoneNumber + "]";
+	}
+
 	public String getState() {
 		return state;
 	}
