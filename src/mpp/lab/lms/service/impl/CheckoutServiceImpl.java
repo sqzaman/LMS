@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import mpp.lab.lms.exceptions.CheckoutException;
 import mpp.lab.lms.model.Book;
 import mpp.lab.lms.model.BookCopy;
 import mpp.lab.lms.model.CheckoutEntry;
@@ -24,11 +25,11 @@ public class CheckoutServiceImpl implements CheckoutService {
 	PersistenceService ps = ServiceFactory.getPersistenceService();
 	
 	@Override
-	public void checkout(int memberId, List<String> isbn) throws Exception {
+	public void checkout(int memberId, List<String> isbn) throws CheckoutException {
 		Member member = ms.getMemberByID(memberId);
 		
 		if (member == null) {
-			throw new Exception("Member not found with id - " + memberId);
+			throw new CheckoutException("Member not found with id - " + memberId);
 		}
 		
 		CheckoutRecord record = new CheckoutRecord(member);
@@ -41,7 +42,7 @@ public class CheckoutServiceImpl implements CheckoutService {
 	}
 	
 	//create checkoutEntry
-	private CheckoutEntry addCheckoutEntry(String isbn, CheckoutRecord record) throws Exception {
+	private CheckoutEntry addCheckoutEntry(String isbn, CheckoutRecord record) throws CheckoutException {
 		Book book;
 		BookCopy copy;
 		Date checkoutDate;
@@ -51,13 +52,13 @@ public class CheckoutServiceImpl implements CheckoutService {
 			book = bs.getBookByISBN(isbn);
 
 		} catch(Exception e) {
-			throw new Exception("Can not find a book by ISBN - " + isbn);
+			throw new CheckoutException("Can not find a book by ISBN - " + isbn);
 		}
 		
 		try {
 			copy = (BookCopy) ((LinkedList) book.getCopies()).getFirst();
 		} catch(NoSuchElementException e) {
-			throw new Exception("No copies of the book available - " + book.getTitle());
+			throw new CheckoutException("No copies of the book available - " + book.getTitle());
 		}
 		
 		checkoutDate = new Date();
