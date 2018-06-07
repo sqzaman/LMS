@@ -17,6 +17,12 @@ public class Member {
 	public int getId() {
 		return id;
 	}
+	
+	@Override
+	public String toString() {
+		return "Member [id=" + id + ", person=" + person + ", checkoutRecords=" + checkoutRecords + "]";
+	}
+
 	public Person getPerson() {
 		return person;
 	}

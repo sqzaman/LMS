@@ -48,7 +48,7 @@ public class Book {
 		String s = "Book: " + this.title + "\n";
 		
 		for (Author author: authors) {
-			s += " Authors: [" + author.toString() + "]";
+			s += " [" + author.toString() + "]";
 		}
 
 		return s;

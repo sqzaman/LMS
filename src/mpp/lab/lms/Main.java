@@ -47,12 +47,13 @@ public class Main {
 		
 		// Role
 		Role admin = new Role(AuthorizationRole.Administrator, "administrator");
-		Role librarian = new Role(AuthorizationRole.Librarian, "administrator");	
+		Role librarian = new Role(AuthorizationRole.Librarian, "librarian");	
 		
 		
 		// Staff		
 		Staff staff1 = new Staff("username1", "password1", admin);
 		Staff staff2 = new Staff("username2", "password2", librarian);
+		staff2.addRole(admin);
 		
 		staffService.addNewStaff(staff1);
 		staffService.addNewStaff(staff2);
@@ -114,7 +115,7 @@ public class Main {
 		member1.addCheckoutRecord(record1);
 		
 		//2. Add a new library member to the system
-		testAddNewMember();
+		//testAddNewMember();
 		
 		//3. test checkout
 		List<String> isbns = new LinkedList<>();
@@ -130,7 +131,7 @@ public class Main {
 		
 		MemberService memberService = ServiceFactory.getMemberService();
 		
-		AuthorizationRole authorizationRole = AuthorizationRole.Librarian;
+		AuthorizationRole authorizationRole = AuthorizationRole.Administrator;
 		
 		Role adminRole = new Role(authorizationRole, "can do alot of stuff");
 		
