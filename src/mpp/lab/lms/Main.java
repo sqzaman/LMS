@@ -10,6 +10,8 @@ import java.util.List;
 
 import mpp.lab.lms.model.Author;
 import mpp.lab.lms.model.Person;
+import mpp.lab.lms.model.Role;
+import mpp.lab.lms.model.Staff;
 import mpp.lab.lms.service.BookService;
 import mpp.lab.lms.service.factory.ServiceFactory;
 import mpp.lab.lms.model.Book;
@@ -43,6 +45,9 @@ public class Main {
 		
 		Book book1 = new Book("123", "Core Java 1", 7, authorList1);
 		Book book2 = new Book("436", "Core C# 1", 15, authorList1);
+		
+		Staff staff1 = new Staff("username1", "password1", new Role("1","Librarian"));
+		Staff staff2 = new Staff("username2", "password2", new Role("2","Admin"));
 		
 		bookService.addBook(book1);
 		bookService.addBook(book2);

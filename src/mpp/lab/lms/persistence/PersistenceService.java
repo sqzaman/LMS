@@ -14,6 +14,7 @@ public interface PersistenceService {
 	void setMembers(Map<Integer, Member> members);
 	Object getObject(Object o);
 	Staff getStaff(String username);
+	void addStaff(Staff f);
 	
 	void addBook(Book b);
 	void addMember(Member m);
