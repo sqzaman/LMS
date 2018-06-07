@@ -20,6 +20,7 @@ import mpp.lab.lms.model.Staff;
 import mpp.lab.lms.service.BookService;
 import mpp.lab.lms.service.LoginService;
 import mpp.lab.lms.service.StaffService;
+import mpp.lab.lms.service.MemberService;
 import mpp.lab.lms.service.factory.ServiceFactory;
 import mpp.lab.lms.util.AuthorizationRole;
 
@@ -96,8 +97,22 @@ public class Main {
 		
 		member1.addCheckoutRecord(record1);
 		
+		//2. Add a new library member to the system
+		//testAddNewMember();
 		
-
+	}
+	
+	private static void testAddNewMember() {
+		MemberService memberService = ServiceFactory.getMemberService();
+		
+		AuthorizationRole authorizationRole = AuthorizationRole.Administrator;
+		
+		Role adminRole = new Role(authorizationRole, "can do alot of stuff");
+		
+		Staff staff = new Staff("obama", "12345654", adminRole);
+		
+		memberService.addMember(12, staff, "Donald", "Trump", "1000 N Court Street 20A", "Washington DC", "Pensyl", "111-224-2232");
+		
 	}
 
 }
