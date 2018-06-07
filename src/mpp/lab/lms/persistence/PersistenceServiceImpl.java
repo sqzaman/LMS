@@ -6,14 +6,17 @@ import java.util.Map;
 
 import mpp.lab.lms.model.Book;
 import mpp.lab.lms.model.Member;
+import mpp.lab.lms.model.Staff;
 
 public class PersistenceServiceImpl implements PersistenceService {	
 	private Map<String, Book> books;
 	private Map<Integer, Member> members;
+	private Map<String, Staff> staffMap;
 	
 	public PersistenceServiceImpl() {
 		members= new HashMap<>();
 		books = new HashMap<>();
+		staffMap =  new HashMap<>();
 	}
 
 	public Map<String, Book> getBooks() {
@@ -55,5 +58,12 @@ public class PersistenceServiceImpl implements PersistenceService {
 		
 	}
 	
+	@Override
+	public void addStaff(Staff f) {
+		staffMap.put(f.getUsername(), f);		
+	}
 	
+	public Staff getStaff(String username) {			
+		return staffMap.get(username);
+	}
 }

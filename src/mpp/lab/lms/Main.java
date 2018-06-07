@@ -5,14 +5,18 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 import mpp.lab.lms.model.Author;
 import mpp.lab.lms.model.Person;
+import mpp.lab.lms.model.Role;
+import mpp.lab.lms.model.Staff;
 import mpp.lab.lms.service.BookService;
+import mpp.lab.lms.service.LoginService;
+import mpp.lab.lms.service.MemberService;
 import mpp.lab.lms.service.factory.ServiceFactory;
+import mpp.lab.lms.util.AuthorizationRole;
 import mpp.lab.lms.model.Book;
 import mpp.lab.lms.model.BookCopy;
 import mpp.lab.lms.model.CheckoutEntry;
@@ -22,11 +26,34 @@ import mpp.lab.lms.model.Member;
 public class Main {
 
 	public static void main(String[] args) throws ParseException {
+		LoginService loginService = ServiceFactory.getLoginService(); 
+		
 		DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String dateString1 = "2014-02-11";
 		Date date1 = sdf.parse(dateString1);
 		String dateString2 = "2014-02-18";
 		Date date2 = sdf.parse(dateString2);
+		
+		// Role
+		Role admin = new Role(AuthorizationRole.Administrator, "administrator");
+		Role librarian = new Role(AuthorizationRole.Librarian, "administrator");	
+		
+		
+		// Staff
+		
+		Staff staff1 = new Staff("username1", "password1", admin);
+		Staff staff2 = new Staff("username2", "password2", librarian);
+		
+		Staff staffLogedIn = loginService.login("username1", "password1");
+		
+		if(staffLogedIn == null) {
+			System.out.println("User name or password invalid");
+			return;
+		}
+		
+		//Staff  librarian1 = new Staff();
+		
+		
 		
 		
 		// TODO Auto-generated method stub
@@ -37,11 +64,15 @@ public class Main {
 		Person person2 = new Person("Silas", "Silasinka", "1000 N Court Street 80A", "Chicago", "Illinois", "999-224-2232");
 		
 		Author author1 = new Author("Dr.", "Prominent Writer", person1);
+		Author author2 = new Author("Dr.", "Prominent Writer", person2);
 		List<Author> authorList1 = new ArrayList<>();
 		authorList1.add(author1);
+		authorList1.add(author2);
 		
 		Book book1 = new Book("123", "Core Java 1", 7, authorList1);
 		Book book2 = new Book("436", "Core C# 1", 15, authorList1);
+		
+	
 		
 		bookService.addBook(book1);
 		bookService.addBook(book2);
@@ -59,8 +90,22 @@ public class Main {
 		
 		member1.addCheckoutRecord(record1);
 		
+		//2. Add a new library member to the system
+		//testAddNewMember();
 		
-
+	}
+	
+	private static void testAddNewMember() {
+		MemberService memberService = ServiceFactory.getMemberService();
+		
+		AuthorizationRole authorizationRole = AuthorizationRole.Administrator;
+		
+		Role adminRole = new Role(authorizationRole, "can do alot of stuff");
+		
+		Staff staff = new Staff("obama", "12345654", adminRole);
+		
+		memberService.addMember(12, staff, "Donald", "Trump", "1000 N Court Street 20A", "Washington DC", "Pensyl", "111-224-2232");
+		
 	}
 
 }
