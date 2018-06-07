@@ -29,8 +29,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public Member getMemberByID(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return persistenceService.getMembers().get(id);
 	}
 
 }
