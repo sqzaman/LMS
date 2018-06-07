@@ -155,6 +155,20 @@ public class Main {
 		} catch (CheckoutException e) {
 			System.out.println(e.getMessage());
 		}
+		
+		try {
+			cs.checkout(1234, isbn); //false id
+		} catch (CheckoutException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		try {
+			List fakeIsbns = new LinkedList<>();
+			fakeIsbns.add("123456");
+			cs.checkout(memberId, fakeIsbns ); //false id
+		} catch (CheckoutException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 }

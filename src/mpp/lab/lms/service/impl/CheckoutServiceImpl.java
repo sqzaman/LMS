@@ -27,6 +27,7 @@ public class CheckoutServiceImpl implements CheckoutService {
 	@Override
 	public void checkout(int memberId, List<String> isbn) throws CheckoutException {
 		System.out.println("---------------------------------------------------");
+		System.out.print("Checking out - ");
 		
 		Member member = ms.getMemberByID(memberId);
 		
@@ -34,7 +35,8 @@ public class CheckoutServiceImpl implements CheckoutService {
 			throw new CheckoutException("Member not found with id - " + memberId);
 		}
 		
-		System.out.print("Checking out " + member.getPerson().getFirstName() + ", ");
+		System.out.println(member.getPerson().getFirstName() + ": ");
+		System.out.println("Books: ");
 		
 		CheckoutRecord record = new CheckoutRecord(member);
 		
@@ -54,7 +56,7 @@ public class CheckoutServiceImpl implements CheckoutService {
 		
 		try {
 			book = bs.getBookByISBN(isbn);
-			System.out.println(book.getTitle());
+			System.out.print(book.getTitle() + ", ");
 		} catch(Exception e) {
 			throw new CheckoutException("Can not find a book by ISBN - " + isbn);
 		}
@@ -78,9 +80,9 @@ public class CheckoutServiceImpl implements CheckoutService {
 		HashMap<Integer, Member> members = (HashMap) ps.getMembers();
 		members.put(member.getId(), member);
 		ps.setMembers(members);
-		System.out.println("Checkout successful! ");
-		ps.persistObject(record);
-		ps.persistObject(member);
+		System.out.println("\nCheckout successful! ");
+//		ps.persistObject(record);
+//		ps.persistObject(member);
 	}
 	
 	//add days to current date
